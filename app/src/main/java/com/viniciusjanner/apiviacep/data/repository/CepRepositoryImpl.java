@@ -3,6 +3,9 @@ package com.viniciusjanner.apiviacep.data.repository;
 import com.viniciusjanner.apiviacep.data.mapper.AddressMapper;
 import com.viniciusjanner.apiviacep.data.source.remote.api.ViaCepApi;
 import com.viniciusjanner.apiviacep.domain.model.AddressModel;
+
+import javax.inject.Inject;
+
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
@@ -10,6 +13,7 @@ public class CepRepositoryImpl implements CepRepository {
 
     private final ViaCepApi apiService;
 
+    @Inject
     public CepRepositoryImpl(ViaCepApi apiService) {
         this.apiService = apiService;
     }

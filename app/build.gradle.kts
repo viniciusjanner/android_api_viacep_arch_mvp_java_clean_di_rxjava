@@ -1,8 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.kapt)
-    alias(libs.plugins.google.dagger.hilt)
+    //alias(libs.plugins.kotlin.kapt)
+    //alias(libs.plugins.google.dagger.hilt)
 }
 
 android {
@@ -85,10 +85,10 @@ dependencies {
     annotationProcessor(libs.google.dagger.compiler)
 
     // Dagger Hilt
-    implementation(libs.google.dagger.hilt.android)
-    annotationProcessor(libs.google.dagger.hilt.compiler)
+    //implementation(libs.google.dagger.hilt.android)
+    //annotationProcessor(libs.google.dagger.hilt.compiler)
 
     // Koin
-    implementation(libs.koin.android)
-    implementation(libs.koin.core)
+    //implementation(libs.koin.android)
+    //implementation(libs.koin.core)
 }

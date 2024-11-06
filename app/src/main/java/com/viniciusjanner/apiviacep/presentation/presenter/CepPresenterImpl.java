@@ -1,6 +1,6 @@
 package com.viniciusjanner.apiviacep.presentation.presenter;
 
-import com.viniciusjanner.apiviacep.domain.usecase.FetchAddressUseCase;
+import com.viniciusjanner.apiviacep.domain.usecase.FetchAddressUseCaseImpl;
 import com.viniciusjanner.apiviacep.domain.model.AddressModel;
 import com.viniciusjanner.apiviacep.presentation.contract.CepContract;
 import com.viniciusjanner.apiviacep.utils.ErrorMessage;
@@ -8,18 +8,21 @@ import com.viniciusjanner.apiviacep.utils.Utils;
 
 import java.lang.ref.WeakReference;
 
+import javax.inject.Inject;
+
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
 
 public class CepPresenterImpl implements CepContract.Presenter {
 
     private WeakReference<CepContract.View> viewRef;
-    private final FetchAddressUseCase fetchAddressUseCase;
+    private final FetchAddressUseCaseImpl fetchAddressUseCaseImpl;
     private AddressModel addressModel;
     private final CompositeDisposable disposable = new CompositeDisposable();
 
-    public CepPresenterImpl(FetchAddressUseCase fetchAddressUseCase) {
-        this.fetchAddressUseCase = fetchAddressUseCase;
+    @Inject
+    public CepPresenterImpl(FetchAddressUseCaseImpl fetchAddressUseCaseImpl) {
+        this.fetchAddressUseCaseImpl = fetchAddressUseCaseImpl;
     }
 
     @Override
@@ -51,7 +54,7 @@ public class CepPresenterImpl implements CepContract.Presenter {
 
         view.showLoading();
 
-        disposable.add(fetchAddressUseCase.execute(cep)
+        disposable.add(fetchAddressUseCaseImpl.execute(cep)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 address -> {

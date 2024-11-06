@@ -9,11 +9,11 @@ kotlin = "1.9.0"
 # Versions Androidx
 activity         = "1.9.3"
 appcompat        = "1.7.0"
-constraintlayout = "2.1.4"
-coreKtx          = "1.13.1"
+constraintlayout = "2.2.0"
+coreKtx          = "1.15.0"
 coreSplashScreen = "1.0.1"
-fragmentKtx      = "1.8.4"
-lifecycle        = "2.8.6"
+fragmentKtx      = "1.8.5"
+lifecycle        = "2.8.7"
 multidex         = "2.0.1"
 
 # Versions Google
@@ -54,12 +54,12 @@ google-dagger          = { group = "com.google.dagger", name = "dagger",        
 google-dagger-compiler = { group = "com.google.dagger", name = "dagger-compiler", version.ref = "googleDagger" }
 
 # Libraries Google Dagger Hilt
-google-dagger-hilt-android  = { group = "com.google.dagger", name = "hilt-android",  version.ref = "googleDaggerHilt" }
-google-dagger-hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "googleDaggerHilt" }
+#google-dagger-hilt-android  = { group = "com.google.dagger", name = "hilt-android",  version.ref = "googleDaggerHilt" }
+#google-dagger-hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "googleDaggerHilt" }
 
 # Libraries Koin
-koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
-koin-core    = { group = "io.insert-koin", name = "koin-core",    version.ref = "koin" }
+#koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
+#koin-core    = { group = "io.insert-koin", name = "koin-core",    version.ref = "koin" }
 
 # Libraries RxJava
 rxjava3-rxjava    = { group = "io.reactivex.rxjava3", name = "rxjava",    version.ref = "rxjava" }
@@ -81,7 +81,7 @@ android-application = { id = "com.android.application", version.ref = "agp" }
 
 # Plugins Jetbrains
 kotlin-android      = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-kotlin-kapt         = { id = "org.jetbrains.kotlin.kapt",    version.ref = "kotlin" }
+#kotlin-kapt         = { id = "org.jetbrains.kotlin.kapt",    version.ref = "kotlin" }
 
 # Plugins Google
-google-dagger-hilt  = { id = "com.google.dagger.hilt.android", version.ref = "googleDaggerHilt" }
+#google-dagger-hilt  = { id = "com.google.dagger.hilt.android", version.ref = "googleDaggerHilt" }

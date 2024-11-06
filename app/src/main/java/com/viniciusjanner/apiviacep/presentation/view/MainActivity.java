@@ -9,20 +9,24 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.viniciusjanner.apiviacep.CepApp;
 import com.viniciusjanner.apiviacep.databinding.ActivityMainBinding;
 import com.viniciusjanner.apiviacep.domain.model.AddressModel;
 import com.viniciusjanner.apiviacep.presentation.contract.CepContract;
-import com.viniciusjanner.apiviacep.presentation.presenter.CepFactory;
 import com.viniciusjanner.apiviacep.utils.Utils;
 
 import androidx.core.splashscreen.SplashScreen;
+
+import javax.inject.Inject;
 
 public class MainActivity extends AppCompatActivity implements CepContract.View {
 
     private static final String TAG_LOG = MainActivity.class.getSimpleName();
 
     private ActivityMainBinding binding;
-    private CepContract.Presenter presenter;
+
+    @Inject
+    CepContract.Presenter presenter;
 
     private static final int FLIPPER_CHILD_MESSAGE = 0;
     private static final int FLIPPER_CHILD_SUCCESS = 1;
@@ -36,26 +40,26 @@ public class MainActivity extends AppCompatActivity implements CepContract.View 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         initSplashScreen();
+        initDagger();
         super.onCreate(savedInstanceState);
         initMainScreen();
-        initPresenter();
         setupListeners();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        if (presenter != null) {
-            presenter.attachView(this);
-        }
+        startPresenter();
     }
 
     @Override
     protected void onStop() {
-        if (presenter != null) {
-            presenter.detachView();
-        }
+        stopPresenter();
         super.onStop();
+    }
+
+    private void initDagger() {
+        CepApp.getAppComponent().inject(this);
     }
 
     private void initSplashScreen() {
@@ -77,8 +81,16 @@ public class MainActivity extends AppCompatActivity implements CepContract.View 
         Utils.openKeyboard(binding.edtCep);
     }
 
-    private void initPresenter() {
-        presenter = CepFactory.createCepPresenter();
+    private void startPresenter() {
+        if (presenter != null) {
+            presenter.attachView(this);
+        }
+    }
+
+    private void stopPresenter() {
+        if (presenter != null) {
+            presenter.detachView();
+        }
     }
 
     private void setupListeners() {
